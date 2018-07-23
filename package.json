@@ -1,0 +1,22 @@
+{
+  "name": "@udock/vue-plugin-ui--input",
+  "private": true,
+  "description": "@udock/vue-plugin-ui--input",
+  "version": "0.0.1",
+  "main": "dist/index.umd.js",
+  "files": [
+    "dist",
+    "src/scss",
+    "vscode-snippets"
+  ],
+  "scripts": {
+    "build": "@udock/build-tools webpack sass"
+  },
+  "peerDependencies": {
+    "lodash": "^4.17.4",
+    "vue": "^2.3.3"
+  },
+  "devDependencies": {
+    "@udock/build-tools": "^0.0.1"
+  }
+}

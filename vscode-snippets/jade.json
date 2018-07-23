@@ -1,0 +1,9 @@
+{
+  "u-input": {
+		"description": "UInput",
+		"prefix": "u-input",
+		"body": [
+			"UInput$0(v-model=\"${1:model}\")"
+		]
+	}
+}
