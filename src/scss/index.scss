@@ -164,7 +164,7 @@
 
 .#{$ui-input-prefix-cls}-group__append,
 .#{$ui-input-prefix-cls}-group__prepend {
-  background-color: $ui-input-bg-color * 1.02;
+  background-color: lighten($ui-input-bg-color, 1.02);
   color:#97a8be;
   color: $ui-input-slot-color;
   vertical-align:middle;

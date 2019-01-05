@@ -4,13 +4,13 @@
 $ui-input-prefix-cls: "#{$css-prefix}input"!default;
 
 // Color
-$ui-input-color: $text-color * 0.31 !default;
-$ui-input-placeholder-color: $text-color * 1.6 !default;
-$ui-input-slot-color: $text-color * 1.6 !default;
-$ui-input-append-icon-color: $text-color * 1.9 !default;
+$ui-input-color: lighten($text-color, 0.31) !default;
+$ui-input-placeholder-color: lighten($text-color, 1.6) !default;
+$ui-input-slot-color: lighten($text-color, 1.6) !default;
+$ui-input-append-icon-color: lighten($text-color, 1.9) !default;
 
-$ui-input-clickable-hover-color: $ui-input-append-icon-color * 0.7 !default;
-$ui-input-clickable-hover-border-color: $ui-input-append-icon-color * 0.7 !default;
+$ui-input-clickable-hover-color: lighten($ui-input-append-icon-color, 0.7) !default;
+$ui-input-clickable-hover-border-color: lighten($ui-input-append-icon-color, 0.7) !default;
 
 $ui-input-cursor-disabled: $cursor-disabled !default;
 
@@ -33,9 +33,9 @@ $ui-input-height-small: 24px!default;
 // Border
 $ui-input-border: solid 1px $border-color-base !default;
 $ui-input-border-color: $border-color-base !default;
-$ui-input-active-border-color: $border-color-base * 2 !default;
+$ui-input-active-border-color: lighten($border-color-base, 2) !default;
 
-$ui-input-hover-border-color: $border-color-base * 0.62 !default;
+$ui-input-hover-border-color: lighten($border-color-base, 0.62) !default;
 $ui-input-focus-border-color: $link-color-base !default;
 
 $ui-input-border-radius: $border-radius-base !default;
@@ -45,11 +45,11 @@ $ui-input-border-radius: $border-radius-base !default;
 
 
 // Disabled
-$ui-input-disabled-color: $disabled-color * 0.5 !default;
+$ui-input-disabled-color: lighten($disabled-color, 0.5) !default;
 $ui-input-disabled-bg-color: $disabled-color !default;
-$ui-input-disabled-border-color: $disabled-color * 0.86 !default;
+$ui-input-disabled-border-color: lighten($disabled-color, 0.86) !default;
 
-$ui-input-disabled-placeholder-color: $disabled-color * 0.7 !default;
+$ui-input-disabled-placeholder-color: lighten($disabled-color, 0.7) !default;
 
 
 // Textarea - Disabled
@@ -59,8 +59,8 @@ $textarea-disabled-color: $ui-input-disabled-color !default;
 
 $textarea-bg-color: #fff !default;
 $textarea-border-color: $border-color-base !default;
-$textarea-placeholder-color: $text-color * 1.6 !default;
-$textarea-hover-border-color: $border-color-base * 0.62 !default;
+$textarea-placeholder-color: lighten($text-color, 1.6) !default;
+$textarea-hover-border-color: lighten($border-color-base, 0.62) !default;
 $textarea-focus-border-color: $link-color-base !default;
 
 

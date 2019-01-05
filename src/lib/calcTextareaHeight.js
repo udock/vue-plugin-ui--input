@@ -96,5 +96,5 @@ export default function calcTextareaHeight (
     height = Math.min(maxHeight, height)
   }
 
-  return {height: height + 'px'}
+  return { height: height + 'px' }
 }

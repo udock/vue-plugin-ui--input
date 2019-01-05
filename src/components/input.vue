@@ -27,7 +27,7 @@
         </i>
       </slot>
       <input
-      	v-if="type !== 'textarea'"
+        v-if="type!=='textarea'"
         ref="input"
         class="u-input__inner"
         v-bind="$props"
@@ -61,123 +61,123 @@
   </div>
 </template>
 <script>
-  import { mixins } from '@udock/vue-plugin-ui'
-  import calcTextareaHeight from '../lib/calcTextareaHeight'
-  import merge from 'lodash/merge'
+import { mixins } from '@udock/vue-plugin-ui'
+import calcTextareaHeight from '../lib/calcTextareaHeight'
+import merge from 'lodash/merge'
 
-  export default {
-    name: 'UInput',
-    componentName: 'UInput',
-    mixins: [mixins.Emitter],
-    data () {
-      return {
-        textareaCalcStyle: {}
-      }
-    },
-    props: {
-      value: {
-        type: [String, Number],
-        default: ''
-      },
-      placeholder: String,
-      size: String,
-      resize: String,
-      readonly: Boolean,
-      autofocus: Boolean,
-      icon: String,
-      disabled: Boolean,
-      type: {
-        type: String,
-        default: 'text'
-      },
-      name: String,
-      autosize: {
-        type: [Boolean, Object],
-        default: false
-      },
-      rows: {
-        type: Number,
-        default: 2
-      },
-      autoComplete: {
-        type: String,
-        default: 'off'
-      },
-      form: String,
-      maxlength: Number,
-      minlength: Number,
-      max: {},
-      min: {},
-      step: {},
-      validateEvent: {
-        type: Boolean,
-        default: true
-      },
-      onIconClick: Function
-    },
-    computed: {
-      currentValue () {
-        this.handleInputOther(this.value)
-        return this.value
-      },
-      validating () {
-        return this.$parent.validateState === 'validating'
-      },
-      textareaStyle () {
-        return merge({}, this.textareaCalcStyle, { resize: this.resize })
-      }
-    },
-    methods: {
-      handleBlur (event) {
-        this.$emit('blur', event)
-        if (this.validateEvent) {
-          this.dispatch('ElFormItem', 'u.form.blur', [this.currentValue])
-        }
-      },
-      inputSelect () {
-        this.$refs.input.select()
-      },
-      resizeTextarea () {
-        if (this.$isServer) return
-        var { autosize, type } = this
-        if (!autosize || type !== 'textarea') return
-        const minRows = autosize.minRows
-        const maxRows = autosize.maxRows
-
-        this.textareaCalcStyle = calcTextareaHeight(this.$refs.textarea, minRows, maxRows)
-      },
-      handleFocus (event) {
-        this.$emit('focus', event)
-      },
-      handleInput (event) {
-        const value = this.type === 'number' ? parseFloat(event.target.value) : event.target.value
-        this.handleInputOther(value)
-        this.$emit('input', value)
-        this.$emit('change', value)
-      },
-      handleInputOther (value) {
-        this.$nextTick(_ => {
-          this.resizeTextarea()
-        })
-        if (this.validateEvent) {
-          this.dispatch('ElFormItem', 'u.form.change', [value])
-        }
-      },
-      handleIconClick (event) {
-        if (this.onIconClick) {
-          this.onIconClick(event)
-        }
-        this.$emit('click', event)
-      },
-      focus () {
-        (this.$refs.textarea || this.$refs.input).focus()
-      }
-    },
-    created () {
-      this.$on('inputSelect', this.inputSelect)
-    },
-    mounted () {
-      this.resizeTextarea()
+export default {
+  name: 'UInput',
+  componentName: 'UInput',
+  mixins: [mixins.Emitter],
+  data () {
+    return {
+      textareaCalcStyle: {}
     }
+  },
+  props: {
+    value: {
+      type: [String, Number],
+      default: ''
+    },
+    placeholder: String,
+    size: String,
+    resize: String,
+    readonly: Boolean,
+    autofocus: Boolean,
+    icon: String,
+    disabled: Boolean,
+    type: {
+      type: String,
+      default: 'text'
+    },
+    name: String,
+    autosize: {
+      type: [Boolean, Object],
+      default: false
+    },
+    rows: {
+      type: Number,
+      default: 2
+    },
+    autoComplete: {
+      type: String,
+      default: 'off'
+    },
+    form: String,
+    maxlength: Number,
+    minlength: Number,
+    max: {},
+    min: {},
+    step: {},
+    validateEvent: {
+      type: Boolean,
+      default: true
+    },
+    onIconClick: Function
+  },
+  computed: {
+    currentValue () {
+      this.handleInputOther(this.value)
+      return this.value
+    },
+    validating () {
+      return this.$parent.validateState === 'validating'
+    },
+    textareaStyle () {
+      return merge({}, this.textareaCalcStyle, { resize: this.resize })
+    }
+  },
+  methods: {
+    handleBlur (event) {
+      this.$emit('blur', event)
+      if (this.validateEvent) {
+        this.dispatch('ElFormItem', 'u.form.blur', [this.currentValue])
+      }
+    },
+    inputSelect () {
+      this.$refs.input.select()
+    },
+    resizeTextarea () {
+      if (this.$isServer) return
+      var { autosize, type } = this
+      if (!autosize || type !== 'textarea') return
+      const minRows = autosize.minRows
+      const maxRows = autosize.maxRows
+
+      this.textareaCalcStyle = calcTextareaHeight(this.$refs.textarea, minRows, maxRows)
+    },
+    handleFocus (event) {
+      this.$emit('focus', event)
+    },
+    handleInput (event) {
+      const value = this.type === 'number' ? parseFloat(event.target.value) : event.target.value
+      this.handleInputOther(value)
+      this.$emit('input', value)
+      this.$emit('change', value)
+    },
+    handleInputOther (value) {
+      this.$nextTick(_ => {
+        this.resizeTextarea()
+      })
+      if (this.validateEvent) {
+        this.dispatch('ElFormItem', 'u.form.change', [value])
+      }
+    },
+    handleIconClick (event) {
+      if (this.onIconClick) {
+        this.onIconClick(event)
+      }
+      this.$emit('click', event)
+    },
+    focus () {
+      (this.$refs.textarea || this.$refs.input).focus()
+    }
+  },
+  created () {
+    this.$on('inputSelect', this.inputSelect)
+  },
+  mounted () {
+    this.resizeTextarea()
   }
+}
 </script>
