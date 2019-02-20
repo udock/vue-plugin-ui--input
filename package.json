@@ -1,6 +1,5 @@
 {
   "name": "@udock/vue-plugin-ui--input",
-  "private": true,
   "description": "@udock/vue-plugin-ui--input",
   "version": "0.0.1",
   "main": "dist/index.umd.js",
@@ -18,5 +17,6 @@
   },
   "devDependencies": {
     "@udock/build-tools": "^0.0.2"
-  }
+  },
+  "license": "MIT"
 }
